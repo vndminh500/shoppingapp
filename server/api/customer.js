@@ -65,9 +65,24 @@ router.post("/signup", async function (req, res) {
     };
     const result = await CustomerDAO.insert(newCust);
     if (result) {
-      const send = await EmailUtil.send(email, result._id, token);
-      if (send) res.json({ success: true, message: "Please check email" });
-      else res.json({ success: false, message: "Email failure" });
+      try {
+        const send = await EmailUtil.send(email, result._id, token);
+        if (send)
+          res.json({ success: true, message: "Please check email" });
+        else
+          res.json({
+            success: false,
+            message: "Email failure (SMTP returned false)",
+          });
+      } catch (err) {
+        console.error(err);
+        res.json({
+          success: false,
+          message:
+            err.message ||
+            "Email failure (check Gmail App Password / SMTP settings)",
+        });
+      }
     } else {
       res.json({ success: false, message: "Insert failure" });
     }

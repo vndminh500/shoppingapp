@@ -1,6 +1,30 @@
 /* styles.css */
+.body-customer,
+.body-admin,
+.body-admin * {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --primary: #2563eb;
+  --border: #e5e7eb;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Common card/layout wrappers */
 .body-customer {
   width: 1150px;
+  max-width: 100%;
+  background: var(--card);
+  padding: 0 16px 16px 16px;
   height: fit-content;
   margin: 0px auto;
 }
@@ -26,20 +50,27 @@ figure.caption-right {
   left: 50%;
   transform: translate(-50%,-50%);
   padding: 0px 20px 20px 20px;
-  border: 1px solid black;
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 10px;
 }
 .text-center {
   text-align: center;
 }
 span.link {
   cursor: pointer;
-  color: blue;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+span.link:hover {
   text-decoration: underline;
 }
 
 /* menu.css */
 div.border-bottom {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--border);
   padding: 10px 0px 10px 0px;
 }
 div.float-left {
@@ -59,19 +90,35 @@ li.menu {
   display: inline;
   margin-right: 20px;
   text-transform: uppercase;
+  font-weight: 700;
 }
 form.search {
   margin: 0px;
 }
 input.keyword {
   width: 110px;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
 }
 
 /* datatable.css */
 .datatable {
   text-align: center;
   border-collapse: collapse;
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
 }
+
+.datatable th,
+.datatable td {
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
 /* header */
 tr:first-child.datatable {
   background-color: #ffcc00;
