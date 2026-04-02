@@ -1,0 +1,11 @@
+{
+  "name": "shoppingonline-root",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Root scripts for deploying server + React frontends",
+  "scripts": {
+    "start": "node server/index.js",
+    "build": "npm --prefix client-customer install && npm --prefix client-customer run build && npm --prefix client-admin install && npm --prefix client-admin run build"
+  }
+}
+
